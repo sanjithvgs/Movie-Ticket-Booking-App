@@ -9,8 +9,17 @@ import {useSelector} from 'react-redux';
   
 function App() {
   const {loading} = useSelector((state)=>state.loader)
+  const {user} = useSelector((state)=>state.user)
   return (
+
     <div>
+
+      { loading &&(
+        <div className='loader-container'>
+        {" "}
+        <div className='loader'> </div> {" "}
+           </div>
+      )}
       <BrowserRouter>
       <Routes>
 

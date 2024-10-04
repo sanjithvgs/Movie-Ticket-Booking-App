@@ -1,9 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit'
 import loadersReducer from './loadersSilce'
+import userReducer from './userSilce'
 
 const store = configureStore({
     reducer : {
-        loader : loadersReducer
+        loader : loadersReducer,
+        user : userReducer
     }
 })
 
