@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const authMiddleware = require('../middlewares/authMiddleware')
 
 const User = require('../models/userModel')
 
@@ -78,6 +79,10 @@ router.post('/login', async(req, res)=>{
     }catch(error){
         console.log(error)
     }
+})
+
+router.get('/get-current-user', authMiddleware, async(req, res)=>{
+
 })
 
 module.exports = router
