@@ -22,7 +22,7 @@ function Login() {
 
         dispatch(setUser(response.user))
         
-        // window.location.href = '/'
+        window.location.href = '/'
       }else{
         message.error(response.message)
       }
