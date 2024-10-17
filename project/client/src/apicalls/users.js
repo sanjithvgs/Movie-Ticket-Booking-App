@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {axiosInstance} from './index';
 
 
@@ -21,7 +22,6 @@ export const LoginUser = async (value) =>{
         console.log(error)
     }
 }
-
 
 export const getCurrentUser = async() =>{
 

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LoginUser } from "../apicalls/users";
 
 import { Form, Input, Button, message } from "antd";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { setUser } from "../redux/userSilce";
 import { useDispatch } from "react-redux";
 
@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 function Login() {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const submitForm = async (value)=>{
     
     try{
@@ -33,6 +34,13 @@ function Login() {
       console.log(error)
     }
   }
+
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      navigate('/')
+    }
+  },[])
+
   return (
     <>
       <header className="App-header">
