@@ -1,15 +1,16 @@
-const jsw =  require('jsonwebtoken')
+const jwt =  require('jsonwebtoken');
 
-module.exports = function (req, res, next){
+module.exports = function(req, res, next){
 
     try{
 
-        let token = req.headers.authorization.split(' ')[1]
-        let verifiedToken = jwt.verify(token, `${process.env.SECRET_KEY}`)
+        const token = req.headers.authorization.split(" ")[1];
+        console.log(token)
+        const verifiedToken = jwt.verify(token, process.env.SECRET_KEY)
+        console.log(verifiedToken)
+        req.body.userId = verifiedToken.userId;
     
-        req.body.userId = verifiedToken.userId  
-    
-        next()
+        next();
 
     }catch(err){
         res.send({
@@ -19,3 +20,5 @@ module.exports = function (req, res, next){
     }
 
 }
+
+
