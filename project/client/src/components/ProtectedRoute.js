@@ -4,7 +4,7 @@ import { getCurrentUser } from '../apicalls/users';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser} from '../redux/userSilce';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, message } from 'antd';
 import { Header } from 'antd/es/layout/layout';
 import { HomeOutlined, UserAddOutlined, UserOutlined, LogoutOutlined} from '@ant-design/icons';
 
@@ -29,7 +29,11 @@ function ProtectedRoute({children}){
 
             children : [
                 {
-                    label : 'Profile',
+                    label : (
+                        <span onClick={()=> {user.isAdmin? navigate('/admin') : navigate('/profile')}}>
+                            My Profile
+                        </span>
+                    ),
                     icon : <UserOutlined />
                 },
                 {
@@ -43,13 +47,28 @@ function ProtectedRoute({children}){
     const getValidUser = async() =>{
         try{
             dispatch(showLoading());
+
             const response = await getCurrentUser();
-            console.log(response);
-            dispatch(setUser(response.data));
+            if(response.success){
+                dispatch(setUser(response.data));
+
+                if (!response.data.isAdmin){
+                    message.error("Your are not authorized !!!")
+                    navigate('/')
+                }
+            }else{
+                dispatch(setUser(null));
+                    message.error(response.message);
+                    localStorage.removeItem('token');
+                    navigate('/login');
+            }
+
             dispatch(hideLoading());
-        }catch(error){
-            console.log(error)
-        }
+        }catch(err){
+            dispatch(hideLoading());
+            dispatch(setUser(null));
+            message.error(err.message);
+        } 
     }
 
     useEffect(()=>{
