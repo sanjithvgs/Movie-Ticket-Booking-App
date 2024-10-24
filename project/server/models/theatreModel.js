@@ -21,10 +21,10 @@ const theatreSchema = new mongoose.Schema({
         required : true
     },
 
-    // owner:{
-    //     type : mongoose.Schema.Types.ObjectId,
-    //     ref : 'users'
-    // },
+    owner:{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'users'
+    },
 
     isActive : {
         type : Boolean,

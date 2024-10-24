@@ -1,9 +1,17 @@
 import React from 'react'
+import { Button } from 'antd'
+import TheatreFormModel from './TheatreFormModel'
 
 function TheatreList() {
     return(
         <div>
-            <h2>TheatreList</h2>
+            
+            <div className='d-flex justify-content-end'>
+                <Button type='primary'>Add Theatre</Button>
+                <TheatreFormModel/>
+            </div>
+
+
         </div>
     )
 }
