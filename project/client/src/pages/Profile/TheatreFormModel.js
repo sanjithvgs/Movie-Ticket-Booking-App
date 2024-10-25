@@ -48,9 +48,6 @@ function TheatreFormModel(){
               <Button className='mt-3' block >Cancel</Button>
           </Form.Item>
       </Form>
-
-
-
         </>
     )
 }
