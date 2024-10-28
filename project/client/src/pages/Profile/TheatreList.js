@@ -5,13 +5,10 @@ import TheatreFormModel from './TheatreFormModel'
 function TheatreList() {
     return(
         <div>
-            
             <div className='d-flex justify-content-end'>
-                <Button type='primary'>Add Theatre</Button>
+                <Button type='primary'>Add New Theatre Here</Button>
                 <TheatreFormModel/>
             </div>
-
-
         </div>
     )
 }
