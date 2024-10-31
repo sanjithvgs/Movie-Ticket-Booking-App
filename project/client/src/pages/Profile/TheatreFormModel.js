@@ -32,7 +32,7 @@ function TheatreFormModel(){
               }}>
               <Col span={12}>
                   <Form.Item  label="Email" htmlFor='email' name="email" className='d-block' rules={[{required: true, message: "Email  is required!"}]}>
-                        <Input id="email" type="email" placeholder='Enter the email'></Input>
+                        <Input id="email" type="email" placeholder='Enter the E-mail'></Input>
                 </Form.Item>
               </Col>
               <Col span={12}>
