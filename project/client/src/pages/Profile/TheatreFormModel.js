@@ -20,7 +20,7 @@ function TheatreFormModel(){
             </Col>
             <Col span={24}>
               <Form.Item label="Theatre Address" htmlFor='address' name="address" className='d-block' rules={[{required: true, message: "Theatre name is required!"}]}>
-                <TextArea id="address" rows="3" placeholder='Enter the theatre name'></TextArea>
+                <TextArea id="address" rows="3" placeholder='Enter the theatre address'></TextArea>
               </Form.Item>
             </Col>
             <Col span={24}>
