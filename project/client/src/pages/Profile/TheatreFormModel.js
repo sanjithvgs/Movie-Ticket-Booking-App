@@ -1,10 +1,12 @@
 import React from 'react'
-import { Col, Form, Row, Input, Button } from 'antd';
+import { Modal, Col, Form, Row, Input, Button } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 
-function TheatreFormModel(){
+function TheatreFormModel({isModelOpen, setModel}){
     return(
         <>
+
+        <Modal open={isModelOpen}  closable={false}  footer={null}> 
 
 <Form layout='vertical' style={{width: "100%"}}>
           <Row gutter={{
@@ -19,7 +21,7 @@ function TheatreFormModel(){
               </Form.Item>
             </Col>
             <Col span={24}>
-              <Form.Item label="Theatre Address" htmlFor='address' name="address" className='d-block' rules={[{required: true, message: "Theatre name is required!"}]}>
+              <Form.Item label="Theatre Address" htmlFor='address' name="address" className='d-block' rules={[{required: true, message: "Theatre address is required!"}]}>
                 <TextArea id="address" rows="3" placeholder='Enter the theatre address'></TextArea>
               </Form.Item>
             </Col>
@@ -45,9 +47,10 @@ function TheatreFormModel(){
           </Row>          
           <Form.Item>
               <Button block type="primary" htmlType='submit' style={{fontSize: "1rem", fontWeight: "600"}}>Submit the Data</Button>
-              <Button className='mt-3' block >Cancel</Button>
+              <Button className='mt-3' block onClick={()=>setModel(false)}>Cancel</Button>
           </Form.Item>
       </Form>
+      </Modal>
         </>
     )
 }
