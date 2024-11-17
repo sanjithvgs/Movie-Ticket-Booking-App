@@ -1,6 +1,6 @@
 import {axiosInstance} from './index';
 
-export const addTheatre = async ()=>{
+export const addTheatre = async (payload)=>{
     try{
         const response = await axiosInstance.post('/api/theatres/add-theatre', payload)
         return response.data
@@ -10,17 +10,17 @@ export const addTheatre = async ()=>{
 }
 
 
-export const updateTheatre = async ()=>{
+export const updateTheatre = async (payload)=>{
     try{
         const response = await axiosInstance.put('/api/theatres/update-theatre', payload)
-        return response.data
+        return response.data    
     }catch(error){
         return error.message;
     }
 }
 
 
-export const deleteTheatre = async ()=>{
+export const deleteTheatre = async (payload)=>{
     try{
         const response = await axiosInstance.delete('/api/theatres/delete-theatre', payload)
         return response.data

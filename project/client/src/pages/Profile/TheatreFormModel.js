@@ -1,14 +1,34 @@
 import React from 'react'
-import { Modal, Col, Form, Row, Input, Button } from 'antd';
+import { Modal, Col, Form, Row, Input, Button, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
+import { addTheatre } from '../../apicalls/theaters';
+import { useSelector } from "react-redux";
 
 function TheatreFormModel({isModelOpen, setModel}){
+
+  const { user } = useSelector((state) => state.user)
+
+    const onSubmitForm = async(payload)=>{
+
+      try{
+
+        const response = await addTheatre({...payload, owner: user._id})
+        if(response.success){
+          setModel(false)
+          message.success("Theatre added succesfully")
+        } 
+ 
+      }catch(err){
+        console.log(err)
+      }
+    }
+
     return(
         <>
 
         <Modal open={isModelOpen}  closable={false}  footer={null}> 
 
-<Form layout='vertical' style={{width: "100%"}}>
+<Form layout='vertical' style={{width: "100%"}} onFinish={onSubmitForm}>
           <Row gutter={{
             xs: 6,
             sm: 10,
