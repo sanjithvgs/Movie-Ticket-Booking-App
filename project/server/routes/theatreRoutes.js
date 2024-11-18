@@ -13,7 +13,7 @@ router.post('/add-theatre' , async(req, res)=>{
 
         res.send({
             success : true,
-            message : "New theatre has been added!"
+            message : "New theatre added successfully!"
         })
 
     }catch(error){
