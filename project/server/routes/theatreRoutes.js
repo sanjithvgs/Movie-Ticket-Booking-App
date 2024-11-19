@@ -66,4 +66,40 @@ router.delete('/delete-theatre' , async(req, res)=>{
     }
 })
 
+// Get the theatre of a specific owner
+router.get('get-all-theatres-by-owner', async (req,res)=>{
+    try{
+
+        
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        })
+    }
+})
+
+
+
+
+// Get all theatres for Admin route
+router.get('/get-all-theatres', async(req, res)=>{
+    try{
+
+        const allTheatres = await Theatre.find().populate('owner');
+        res.send({
+            success: true,
+            message: "All Theatre fetched",
+            data: allTheatres
+        });
+
+    }catch(err){
+        res.send({
+            success: false,
+            message: err.message
+        });
+    }
+});
+
+
 module.exports = router;

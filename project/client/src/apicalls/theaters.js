@@ -28,3 +28,15 @@ export const deleteTheatre = async (payload)=>{
         return error.message;
     }
 }
+
+
+// Get theatre of specific owner
+
+export const getAllTheatres = async (payload) =>{
+    try{
+        const response = await axiosInstance.post('/api/theatres/get-all-theatres-by-owner', payload)
+        return response.data
+    }catch(err){
+        return err.message;
+    }
+}
