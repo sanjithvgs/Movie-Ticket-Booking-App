@@ -1,10 +1,14 @@
 import React from 'react'
 import { Modal, Col, Form, Row, Input, Button, message } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import { addTheatre } from '../../apicalls/theaters';
+import { addTheatre, updateTheatre } from '../../apicalls/theaters';
 import { useSelector } from "react-redux";
+import { hideLoading, showLoading } from '../../redux/loadersSilce';
+//import { useDispatch } from 'react-redux';
+
 
 function TheatreFormModel({isModelOpen, setModel}){
+//  const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.user)
 

@@ -2,6 +2,18 @@ import React, { useState } from 'react'
 import { Button } from 'antd'
 import TheatreFormModel from './TheatreFormModel'
 
+
+    //const getData = ()=>{
+
+        //try{
+            // dispatch(showLoading());
+            // const response = await getAllTheatres({ owner: user._id });
+            // if(response.success){
+            //     const allTheatres = response.data;
+            // }
+        //}
+    //}
+
 function TheatreList() {
 
     const [isModelOpen, setModelOpen] = useState(false)

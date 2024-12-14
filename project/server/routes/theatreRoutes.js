@@ -67,9 +67,14 @@ router.delete('/delete-theatre' , async(req, res)=>{
 })
 
 // Get the theatre of a specific owner
-router.get('get-all-theatres-by-owner', async (req,res)=>{
+router.post('get-all-theatres-by-owner', async (req,res)=>{
     try{
-
+        const allTheatres = await Theatre.find({owner: req.body.owner});
+        res.send({
+            success : true,
+            message : "All Theatre fetched successfully",
+            data : allTheatres
+        })
         
     }catch(err){
         res.send({
